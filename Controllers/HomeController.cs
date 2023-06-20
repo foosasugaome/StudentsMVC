@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StudentsMVC.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -22,9 +23,50 @@ namespace StudentsMVC.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Contact Page  - Academy of Learning";
 
             return View();
+        }
+        public ActionResult Instructor(int id  = 0) // Set a default value to avoid  error when  no id is specified in URL
+        {
+            ViewBag.Id = id;
+
+
+
+            Instructor dayTimeInstructor = new Instructor
+            {
+                Id = 1,
+                FirstName = "Norman",
+                LastName = "Teodoro"
+            };
+
+            return View(dayTimeInstructor);
+        }
+        public ActionResult Instructors() 
+        {
+            List<Instructor> instructors = new List<Instructor>
+            {
+                new Instructor
+                {
+                    Id = 1,
+                    FirstName = "Norman",
+                    LastName = "Teodoro"
+                },
+                new Instructor
+                {
+                    Id = 2,
+                    FirstName = "Sheryl",
+                    LastName = "Teodoro"
+                },
+                new Instructor
+                {
+                    Id = 3,
+                    FirstName = "Olivia",
+                    LastName = "Teodoro"
+                },
+
+            };
+            return View(instructors);
         }
     }
 }
